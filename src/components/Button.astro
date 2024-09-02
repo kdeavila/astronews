@@ -1,0 +1,8 @@
+---
+//Código JavaScript
+const { href, title } = Astro.props;
+---
+
+<div class="text-center mt-4 cursor-pointer">
+    <a class="block py-2 px-4 rounded-md text-sm font-semibold text-black bg-[#E9E9E9] hover:scale-[1.15] duration-200 ease-out" href={href}>{title}</a>
+</div>

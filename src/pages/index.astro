@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Characteristic from "../components/Characteristic.astro";
+import Notice from "../components/Notice.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="AstroNews | Daily programming news ">
+  <Navbar>
+    <!-- Sección inicio -->
+    <section
+      id="inicio"
+      class="flex flex-col justify-center items-center md:flex-row md:gap-2"
+    >
+      <div class="w-full mb-4 md:basis-1/2 md:mb-0">
+        <img
+          class="block w-full max-w-64 mx-auto md:max-w-72 lg:max-w-80"
+          src="/hero-image.svg"
+          alt=""
+        />
+      </div>
+
+      <article class="w-full md:basis-1/2">
+        <div
+          class="flex flex-col items-center text-center md:text-left md:items-start"
+        >
+          <h1
+            class="w-11/12 text-4xl font-semibold text-balance mb-2 lg:text-5xl"
+          >
+            Bienvenido a <span
+              class="font-bold bg-gradient-to-r from-[#af00ff] to-[#cc00ff] bg-clip-text text-transparent"
+              >AstroNews</span
+            >
+          </h1>
+
+          <p class="w-11/12 text-[#d7cbdd] text-sm text-balance lg:text-base">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas esse voluptatem tempore distinctio modi magni.
+          </p>
+
+          <div class="flex mt-8">
+            <a
+              class="py-2 px-4 bg-gradient-to-r from-[#af00ff] to-[#cc00ff] text-white text-sm font-semibold rounded-md hover:scale-[1.15] duration-200 ease-out"
+              href="/">Leer más</a
+            >
+          </div>
+        </div>
+      </article>
+    </section>
+  </Navbar>
+
+  <main>
+    <!-- Sección caracteristicas -->
+    <Section
+      id="caracteristicas"
+      title="Carácteristicas"
+      description="Astro se destaca por los siguientes puntos:"
+    >
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
+        <Characteristic
+          src="/rocket.svg"
+          title="Velocidad y rápidez"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
+        />
+
+        <Characteristic
+          src="/newsletter.svg"
+          title="Noticias día a día"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus voluptas."
+        />
+
+        <Characteristic
+          src="/edit.svg"
+          title="Contenido personalizado"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
+        />
+      </div>
+    </Section>
+
+    <!-- Sección notícias -->
+    <Section
+      id="noticias"
+      title="Notícias Astro"
+      description="Las NotiAstros más populares:"
+    >
+      <div
+        class="grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <Notice
+          src="/card-img.webp"
+          title="Noticia #1"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
+          href="/404.astro"
+        />
+
+        <Notice
+          src="/card-img2.webp"
+          title="Noticia #2"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          href="/404.astro"
+        />
+
+        <Notice
+          src="/card-img3.webp"
+          title="Noticia #3"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates."
+          href="/404.astro"
+        />
+        <Notice
+          src="/card-img4.webp"
+          title="Noticia #4"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates."
+          href="/404.astro"
+        />
+        <Notice
+          src="/card-img5.webp"
+          title="Noticia #5"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          href="/404.astro"
+        />
+
+        <Notice
+          src="/card-img6.webp"
+          title="Noticia #6"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
+          href="/404.astro"
+        />
+      </div>
+    </Section>
+
+    <!-- Sección contacto -->
+    <Section
+      id="contacto"
+      title="Contáctanos"
+      description="Enviános un mensaje aquí:"
+    >
+      <article class="w-full max-w-screen-md">
+        <form class="flex flex-col gap-4" autocomplete="off" action="/">
+          <div class="grid grid-cols-2 gap-4">
+            <input
+              class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7]"
+              type="text"
+              placeholder="Nombre"
+              required
+            />
+            <input
+              class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7]"
+              type="text"
+              placeholder="Apellido"
+              required
+            />
+          </div>
+
+          <input
+            class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7]"
+            type="email"
+            placeholder="Correo"
+            required
+          />
+          <textarea
+            class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7] resize-none"
+            placeholder="Detalla tu mensaje!"
+            required
+            cols="30"
+            rows="10"></textarea>
+
+          <div class="flex hover:scale-105 duration-200 ease-out">
+            <button
+              class="w-full py-2 px-4 bg-gradient-to-r from-[#af00ff] to-[#cc00ff] text-white font-semibold rounded-md"
+              >Enviar</button
+            >
+          </div>
+        </form>
+      </article>
+    </Section>
+  </main>
+
+  <Footer />
+  <script src="../js/app.js"></script>
+</Layout>

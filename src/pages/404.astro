@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<Layout title="AstroNews | Daily programming news ">
+  <Navbar>
+    <article class="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center">
+      <h1 id="notFound" class="text-9xl font-bold text-transparent">404</h1>
+      <h1 class="text-2xl font-medium text-white mb-2">Pagina no encontrada</h1>
+      <p class="text-[#d7cbdd] text-xs">Puedes volar a donde quieras... pero hasta aquí no.</p>
+    </article>
+  </Navbar>
+
+  <script src="../js/app.js"></script>
+</Layout>
+
+<style>
+  #notFound {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.6);
+  }
+</style>
