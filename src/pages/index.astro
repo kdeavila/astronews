@@ -5,6 +5,7 @@ import Characteristic from "../components/Characteristic.astro";
 import Notice from "../components/Notice.astro";
 import Section from "../components/Section.astro";
 import Footer from "../components/Footer.astro";
+import { notices } from "../services/notices.js";
 ---
 
 <Layout title="AstroNews | Daily programming news ">
@@ -35,8 +36,10 @@ import Footer from "../components/Footer.astro";
             >
           </h1>
 
-          <p class="w-11/12 text-[#d7cbdd] text-sm text-balance lg:text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas esse voluptatem tempore distinctio modi magni.
+          <p class="w-11/12 text-[#d7cbdd] text-sm text-balance lg:text-lg">
+            Embárcate en un viaje cósmico por el universo de la tecnología.
+            AstroNews te trae las últimas novedades, tendencias y
+            descubrimientos en el mundo de la informática y la programación.
           </p>
 
           <div class="flex mt-8">
@@ -50,7 +53,7 @@ import Footer from "../components/Footer.astro";
     </section>
   </Navbar>
 
-  <main>
+  <main class="mt-20">
     <!-- Sección caracteristicas -->
     <Section
       id="caracteristicas"
@@ -61,19 +64,19 @@ import Footer from "../components/Footer.astro";
         <Characteristic
           src="/rocket.svg"
           title="Velocidad y rápidez"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
+          desc="Aprende los conceptos clave de programación en tiempo récord. Domina nuevas tecnologías y lenguajes con nuestros tutoriales express."
         />
 
         <Characteristic
           src="/newsletter.svg"
           title="Noticias día a día"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus voluptas."
+          desc="Sé el primero en conocer las últimas noticias y tendencias del sector. Mantente actualizado con los lanzamientos más recientes de frameworks y herramientas."
         />
 
         <Characteristic
           src="/edit.svg"
           title="Contenido personalizado"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
+          desc="Planifica tu día con nuestras recomendaciones personalizadas. Un resumen conciso de las noticias más importantes para programadores."
         />
       </div>
     </Section>
@@ -87,45 +90,16 @@ import Footer from "../components/Footer.astro";
       <div
         class="grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-3"
       >
-        <Notice
-          src="/card-img.webp"
-          title="Noticia #1"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
-          href="/404.astro"
-        />
-
-        <Notice
-          src="/card-img2.webp"
-          title="Noticia #2"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          href="/404.astro"
-        />
-
-        <Notice
-          src="/card-img3.webp"
-          title="Noticia #3"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates."
-          href="/404.astro"
-        />
-        <Notice
-          src="/card-img4.webp"
-          title="Noticia #4"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates."
-          href="/404.astro"
-        />
-        <Notice
-          src="/card-img5.webp"
-          title="Noticia #5"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          href="/404.astro"
-        />
-
-        <Notice
-          src="/card-img6.webp"
-          title="Noticia #6"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptates, necessitatibus voluptas."
-          href="/404.astro"
-        />
+        {
+          notices.map((notice) => (
+            <Notice
+              title={notice.title}
+              src={notice.src}
+              desc={notice.description}
+              href={`/notice/${notice.id}`}
+            />
+          ))
+        }
       </div>
     </Section>
 
@@ -177,5 +151,4 @@ import Footer from "../components/Footer.astro";
   </main>
 
   <Footer />
-  <script src="../js/app.js"></script>
 </Layout>

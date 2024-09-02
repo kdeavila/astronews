@@ -1,17 +1,26 @@
 ---
 //Código JavaScript
-const { title, src, description, href } = Astro.props;
+const { title, src, desc, href } = Astro.props;
 import Button from "./Button.astro";
 ---
 
-<article class="w-full h-full flex flex-col items-center justify-center gap-2">
-    <h3 class="text-lg font-semibold md:text-xl lg:text-2xl">{title}</h3>
+<a href={href} class="w-full h-full flex flex-col items-center justify-center gap-2 rounded-md border-2 border-[#3f1649] hover:border-[#AB00D6] hover:rotate-1 duration-300 p-8">
+  <div
+    class="w-full  overflow-hidden "
+  >
+    <img
+      class="w-full h-52 block object-cover scale-110 hover:scale-100 duration-300 ease-in-out"
+      src={src}
+      alt={title}
+    />
+  </div>
+  <h3 class="text-lg font-semibold md:text-xl lg:text-2xl">{title}</h3>
 
-    <div class="w-full rounded-md overflow-hidden border-2 border-[#3f1649] hover:border-[#AB00D6] duration-300">
-        <img class="w-full h-52 block object-cover scale-110 hover:scale-100 duration-300 ease-in-out" src={src} alt={title}>
-    </div> 
+  <div
+    class="w-full text-[#d7cbdd] text-base text-ellipsis overflow-hidden whitespace-nowrap"
+  >
+    {desc}
+  </div>
 
-    <p class="w-11/12 text-[#d7cbdd] text-xs text-balance">{description}</p>
 
-    <Button href={href} title="Leer más"/>
-</article>
+</a>
