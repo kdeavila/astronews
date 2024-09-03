@@ -109,23 +109,8 @@ import { notices } from "../services/notices.js";
       title="Contáctanos"
       description="Enviános un mensaje aquí:"
     >
-      <article class="w-full max-w-screen-md">
+      <article class="w-full max-w-screen-sm">
         <form class="flex flex-col gap-4" autocomplete="off" action="/">
-          <div class="grid grid-cols-2 gap-4">
-            <input
-              class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7]"
-              type="text"
-              placeholder="Nombre"
-              required
-            />
-            <input
-              class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7]"
-              type="text"
-              placeholder="Apellido"
-              required
-            />
-          </div>
-
           <input
             class="px-4 py-2 rounded-md bg-transparent border-2 border-[#7b7b7b] placeholder:text-sm placeholder:text-[#989898] outline-none valid:border-[#e7e7e7]"
             type="email"
@@ -137,14 +122,12 @@ import { notices } from "../services/notices.js";
             placeholder="Detalla tu mensaje!"
             required
             cols="30"
-            rows="10"></textarea>
+            rows="6"></textarea>
 
-          <div class="flex hover:scale-105 duration-200 ease-out">
-            <button
-              class="w-full py-2 px-4 bg-gradient-to-r from-[#af00ff] to-[#cc00ff] text-white font-semibold rounded-md"
-              >Enviar</button
-            >
-          </div>
+          <button
+            class="w-full py-2 px-4 bg-gradient-to-r from-[#af00ff] to-[#cc00ff] text-white font-semibold rounded-md"
+            >Enviar</button
+          >
         </form>
       </article>
     </Section>

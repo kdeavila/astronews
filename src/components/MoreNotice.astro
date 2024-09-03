@@ -1,0 +1,18 @@
+---
+const { href, title, desc } = Astro.props;
+---
+
+<a
+  class="block overflow-hidden rounded-md bg-[#111111] p-6 transition-colors hover:bg-muted/80 border-2 border-[rgba(63,22,73,0)] hover:border-[#AB00D6] hover:bg-[#1a1a1a] duration-300 ease-in-out"
+  href={href}
+>
+  <h3 class="text-lg font-medium">
+    {title}
+  </h3>
+
+  <p
+    class="mt-1 w-full whitespace-nowrap text-ellipsis overflow-hidden text-[#bbbbbb]"
+  >
+    {desc}
+  </p>
+</a>

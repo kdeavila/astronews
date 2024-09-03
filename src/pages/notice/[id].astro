@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
-import Button from "../../components/Button.astro";
+import MoreNotice from "../../components/MoreNotice.astro";
 import { notices } from "../../services/notices.js";
 
 const { id } = Astro.params;
@@ -19,27 +19,48 @@ export async function getStaticPaths() {
   <Navbar />
 
   <!-- Notice section -->
-  <main>
-    <section class="flex flex-col items-center mx-auto mb-10 max-w-4xl">
-
-        
-      <div
-        class="w-full h-96 rounded-md overflow-hidden border-2 border-[rgb(63,22,73)] hover:border-[#AB00D6] duration-300 mb-10 hover:rotate-1"
-      >
-        <img
-          class="w-full h-full block object-cover scale-110 hover:scale-100 duration-300 ease-in-out"
-          src={notice.src}
-          alt={notice.title}
-        />
-      </div>
-
+  <main class="relative">
+    <section class="flex flex-col items-center mx-auto mb-20 max-w-4xl">
       <div>
-        <h1 class="text-4xl font-semibold mb-4">{notice.title}</h1>
-        <p class="text-gray-300 text-lg text-justify mb-6">{notice.description}</p>
-        <span class="text-[#565656] text-sm italic">Date: {notice.date}</span>
+        <h1 class="text-4xl lg:text-5xl text-center font-semibold mb-8">{notice.title}</h1>
+
+        <div
+          class="w-full h-96 rounded-md overflow-hidden border-2 border-[rgb(63,22,73)] hover:border-[#AB00D6] duration-300 mb-10"
+        >
+          <img
+            class="w-full h-full block object-cover scale-110 hover:scale-100 duration-300 ease-in-out"
+            src={notice.src}
+            alt={notice.title}
+          />
+        </div>
+
+        <p class="text-[#cdcdcd] leading-relaxed text-base mb-6">
+          {notice.description}
+        </p>
+        <p class="text-[#b5b5b5] text-sm text-center">
+          Publicado en: {notice.date}
+        </p>
+      </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto mb-20">
+      <div class="mb-4">
+        <h1 class="text-3xl font-semibold mb-2">Más NotiAstros:</h1>
+        <p class="text-[#cdcdcd] ">Explore nuestros últimos artículos e historias de todo el mundo.</p>
       </div>
 
-      <Button title="Volver" href="/#noticias" />
+      <div class="grid grid-rows-3 gap-4">
+        {notices.map((notice)=>{
+          if(notice.id != id){
+            return <MoreNotice
+              title={notice.title}
+              src={notice.src}
+              desc={notice.description}
+              href={`/notice/${notice.id}`}
+            />
+          }
+        })}
+      </div>
     </section>
   </main>
 
