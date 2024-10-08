@@ -1,106 +1,66 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Characteristic from "../components/Characteristic.astro";
-import Notice from "../components/Notice.astro";
 import Section from "../components/Section.astro";
 import Footer from "../components/Footer.astro";
-import { notices } from "../services/notices.js";
+import Hero from "../components/Hero.astro";
+import Layer from "../components/icons/Layer.astro";
+import Jetpack from "../components/icons/Jetpack.astro";
+import Message from "../components/icons/Message.astro";
+import Feature from "../components/Feature.astro";
+
+const FEATURES = [
+  {
+    title: "Velocidad y rápidez",
+    description:
+      "Mantente al día con las últimas noticias de SpaceX. Nuestro boletín te ofrece actualizaciones instantáneas y resúmenes breves, asegurando que no te pierdas nada importante.",
+  },
+  {
+    title: "Noticias día a día",
+    description:
+      "Recibe un resumen diario de las noticias más relevantes de SpaceX, desde lanzamientos hasta actualizaciones de misiones, para tener una visión completa del mundo espacial.",
+  },
+  {
+    title: "Contenido personalizado",
+    description:
+      "Adapta tu experiencia de lectura con contenido según tus intereses. Selecciona tus temas favoritos y recibe noticias alineadas con tus pasiones sobre SpaceX.",
+  },
+];
 ---
 
-<Layout title="AstroNews | Daily programming news ">
-  <Navbar>
-    <!-- Sección inicio -->
-    <section
-      id="inicio"
-      class="flex flex-col justify-center items-center md:flex-row md:gap-2"
-    >
-      <div class="w-full mb-4 md:basis-1/2 md:mb-0">
-        <img
-          class="block w-full max-w-64 mx-auto md:max-w-72 lg:max-w-80"
-          src="/hero-image.svg"
-          alt=""
-        />
-      </div>
+<Layout title="AstroNews | Información de los útlimos lanzamientos de SpaceX">
+  <main>
+    <Hero />
 
-      <article class="w-full md:basis-1/2">
-        <div
-          class="flex flex-col items-center text-center md:text-left md:items-start"
-        >
-          <h1
-            class="w-11/12 text-4xl font-semibold text-balance mb-2 lg:text-5xl"
-          >
-            Bienvenido a <span
-              class="font-bold bg-gradient-to-r from-[#af00ff] to-[#cc00ff] bg-clip-text text-transparent"
-              >AstroNews</span
-            >
-          </h1>
-
-          <p class="w-11/12 text-[#d7cbdd] text-sm text-balance lg:text-lg">
-            Embárcate en un viaje cósmico por el universo de la tecnología.
-            AstroNews te trae las últimas novedades, tendencias y
-            descubrimientos en el mundo de la informática y la programación.
-          </p>
-
-          <div class="flex mt-8">
-            <a
-              class="py-2 px-4 bg-gradient-to-r from-[#af00ff] to-[#cc00ff] text-white text-sm font-semibold rounded-md hover:scale-[1.15] duration-200 ease-out"
-              href="/">Leer más</a
-            >
-          </div>
-        </div>
-      </article>
-    </section>
-  </Navbar>
-
-  <main class="mt-20">
     <!-- Sección caracteristicas -->
     <Section
       id="caracteristicas"
       title="Carácteristicas"
       description="Astro se destaca por los siguientes puntos:"
     >
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
-        <Characteristic
-          src="/rocket.svg"
-          title="Velocidad y rápidez"
-          desc="Aprende los conceptos clave de programación en tiempo récord. Domina nuevas tecnologías y lenguajes con nuestros tutoriales express."
-        />
+      <Layer slot="icon" />
 
-        <Characteristic
-          src="/newsletter.svg"
-          title="Noticias día a día"
-          desc="Sé el primero en conocer las últimas noticias y tendencias del sector. Mantente actualizado con los lanzamientos más recientes de frameworks y herramientas."
-        />
-
-        <Characteristic
-          src="/edit.svg"
-          title="Contenido personalizado"
-          desc="Planifica tu día con nuestras recomendaciones personalizadas. Un resumen conciso de las noticias más importantes para programadores."
-        />
+      <div class="grid grid-cols-1 gap-5">
+        {
+          FEATURES.map((feature, index) => {
+            return (
+              <Feature
+                key={index}
+                title={feature.title}
+                description={feature.description}
+              />
+            );
+          })
+        }
       </div>
     </Section>
 
-    <!-- Sección notícias -->
+    <!-- Sección de características -->
     <Section
-      id="noticias"
-      title="Notícias Astro"
-      description="Las NotiAstros más populares:"
+      id="lanzamientos"
+      title="Últimos lanzamientos"
+      description="Consulta el estado de los ultimos lanzamientos de SpaceX"
     >
-      <div
-        class="grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {
-          notices.map((notice) => (
-            <Notice
-              title={notice.title}
-              src={notice.src}
-              desc={notice.description}
-              href={`/notice/${notice.id}`}
-            />
-          ))
-        }
-      </div>
+      <Jetpack slot="icon" />
     </Section>
 
     <!-- Sección contacto -->
@@ -109,6 +69,8 @@ import { notices } from "../services/notices.js";
       title="Contáctanos"
       description="Enviános un mensaje aquí:"
     >
+      <Message slot="icon" />
+
       <article class="w-full max-w-screen-sm">
         <form class="flex flex-col gap-4" autocomplete="off" action="/">
           <input

@@ -1,0 +1,15 @@
+---
+interface FeatureProps {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props as FeatureProps;
+---
+
+<div class="p-4 bg-neutral-50/5 border border-neutral-50/10 hover:border-neutral-50/20 transition-colors duration-150">
+    <div class="space-y-2">
+        <h3 class="text-xl font-semibold">{title}</h3>
+        <p class="text-sm text-neutral-50/60 text-pretty">{description}</p>
+    </div>
+</div>

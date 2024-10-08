@@ -1,75 +1,56 @@
 ---
-
+const LINKS = ["Inicio", "Caracteristicas", "Lanzamientos", "Contacto"];
 ---
 
 <header>
-  <!-- Navbar -->
-  <nav class="flex items-center justify-between mb-8 md:justify-between z-[1000] relative">
-    <a href="/" class="text-3xl font-medium"
-      >Astro<span
-        class="font-bold bg-gradient-to-r from-[#af00ff] to-[#cc00ff] bg-clip-text text-transparent"
-        >News</span
-      ></a
-    >
-
-    <!-- Menu desktop -->
-    <div class="hidden md:flex items-center justify-center gap-4">
-        <a class="text-base hover:bg-white hover:text-black font-medium duration-150 rounded-md py-2 px-4" href="/#inicio">Inicio</a>
-        <a class="text-base hover:bg-white hover:text-black font-medium duration-150 rounded-md py-2 px-4" href="/#caracteristicas">Características</a>
-        <a class="text-base hover:bg-white hover:text-black font-medium duration-150 rounded-md py-2 px-4" href="/#noticias">Noticias</a>
-        <a class="text-base hover:bg-white hover:text-black font-medium duration-150 rounded-md py-2 px-4" href="/#contacto">Contacto</a>
-    </div>
-
-    <button type="button" id="menu-btn" class="cursor-pointer md:hidden">
-      <img src="/menu.svg" alt="menu-svg" />
-    </button>
-  </nav>
-
-  <!-- Menu mobile -->
-  <section
-    id="menu-mobile" class="absolute top-0 left-0 w-full h-screen min-h-[550px] bg-black flex flex-col items-center justify-center z-[1000] translate-y-[-105%] duration-500 md:hidden"
+  <div
+    class="fixed top-0 left-0 w-full z-[500] bg-neutral-950/10 backdrop-blur-sm border-b border-neutral-50/5"
   >
-    <h1 class="text-4xl font-medium mb-8">
-      Astro<span
-        class="font-bold bg-gradient-to-r from-[#af00ff] to-[#cc00ff] bg-clip-text text-transparent"
-        >News</span
+    <!-- Navbar -->
+    <nav class="w-full h-16 px-8 flex items-center justify-between md:justify-between">
+      <a href="/" class="text-2xl font-semibold text-white"
+        >Astro<span
+          class="font-bold bg-gradient-to-r from-[#af00ff] to-[#cc00ff] bg-clip-text text-transparent"
+          >News</span
+        ></a
       >
-    </h1>
 
-    <ul class="flex items-center flex-col text-center gap-4">
-      <li class="flex">
-        <a
-          class="menu-item py-2 px-4 hover:bg-white hover:text-black duration-100 rounded-md font-medium"
-          href="/#inicio">Inicio</a
+      <button type="button" id="menu-btn" class="cursor-pointer md:hidden">
+        <img src="/menu.svg" alt="menu-svg" />
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <section
+      id="menu-mobile"
+      class="absolute top-0 left-0 w-full h-screen min-h-[550px] bg-black flex flex-col items-center justify-center z-[500] translate-y-[-105%] duration-300 md:hidden"
+    >
+      <h1 class="text-3xl font-semibold mb-8 text-neutral-50">
+        Astro<span
+          class="font-bold bg-gradient-to-r from-[#af00ff] to-[#cc00ff] bg-clip-text text-transparent"
+          >News</span
         >
-      </li>
+      </h1>
 
-      <li class="flex">
-        <a
-          class="menu-item py-2 px-4 hover:bg-white hover:text-black duration-100 rounded-md font-medium"
-          href="/#caracteristicas">Características</a
-        >
-      </li>
+      <ul class="flex items-center flex-col text-center gap-2">
+        {
+          LINKS.map((link) => {
+            return (
+              <li class="flex px-4 py-2 font-semibold hover:bg-neutral-50/5 border border-transparent hover:border-neutral-50/20 text-neutral-50 transition duration-150 rounded menu-item">
+                <a href={`/#${link.toLowerCase()}`}>{link}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
 
-      <li class="flex">
-        <a
-          class="menu-item py-2 px-4 hover:bg-white hover:text-black duration-100 rounded-md font-medium"
-          href="/#noticias">Noticias</a
-        >
-      </li>
-
-      <li class="flex">
-        <a
-          class="menu-item py-2 px-4 hover:bg-white hover:text-black duration-100 rounded-md font-medium"
-          href="/#contacto">Contacto</a
-        >
-      </li>
-    </ul>
-
-    <button type="button" id="menu-btn-close" class="absolute top-0 right-0 -translate-x-10 translate-y-10 cursor-pointer">
-      <img src="/x.svg" alt="menu-close-svg" />
-    </button>
-  </section>
-
-  <slot />
+      <button
+        type="button"
+        id="menu-btn-close"
+        class="absolute top-0 right-0 -translate-x-8 translate-y-5 cursor-pointer"
+      >
+        <img src="/x.svg" alt="menu-close-svg" />
+      </button>
+    </section>
+  </div>
 </header>
